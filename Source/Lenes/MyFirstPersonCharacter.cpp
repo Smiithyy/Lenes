@@ -6,6 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 
 // Constructor
+//Comment to test
 AMyFirstPersonCharacter::AMyFirstPersonCharacter()
 {
     // Set this character to call Tick() every frame
