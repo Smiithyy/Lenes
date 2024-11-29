@@ -14,44 +14,46 @@ public:
     AMyFirstPersonCharacter();
 
 protected:
-    // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
-
-public:    
     // Called every frame
     virtual void Tick(float DeltaTime) override;
 
     // Called to bind functionality to input
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+    // BeginPlay override
+    virtual void BeginPlay() override;
+
 private:
-    // Camera component
+    // First-person camera
     UPROPERTY(VisibleAnywhere)
     class UCameraComponent* FirstPersonCameraComponent;
 
-    // Sprint speed multiplier
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-    float SprintMultiplier;
+    // Movement variables
+    float SprintMultiplier; // Multiplier for sprinting speed
 
-    // Base walk speed
-    float BaseWalkSpeed;
+    // Head bob variables
+    UPROPERTY(EditAnywhere, Category = "Head Bob")
+    float BobFrequency; // Frequency of the head bob oscillation
 
-    // Functions for movement
+    UPROPERTY(EditAnywhere, Category = "Head Bob")
+    float BobAmplitude; // Amplitude of the head bob oscillation
+
+    UPROPERTY(EditAnywhere, Category = "Head Bob")
+    float BobRunMultiplier; // Multiplier for head bob when running
+
+    FVector DefaultCameraPosition; // The default relative position of the camera
+    float BobTimer; // Timer to track the head bob oscillation
+
+    // Input functions
     void MoveForward(float Value);
     void MoveRight(float Value);
-    void TurnAtRate(float Rate);
-    void LookUpAtRate(float Rate);
     void StartJump();
     void StopJump();
-    void StartCrouch();
-    void StopCrouch();
     void StartSprint();
     void StopSprint();
+    void StartCrouch();
+    void StopCrouch();
 
-    // Sensitivity for camera
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera", meta = (AllowPrivateAccess = "true"))
-    float BaseTurnRate;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera", meta = (AllowPrivateAccess = "true"))
-    float BaseLookUpRate;
+    // Head bob function
+    void ApplyHeadBob(float DeltaTime);
 };
