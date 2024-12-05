@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Intermediate\\ProjectFiles\\UE5.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Intermediate\\ProjectFiles\\Lenes.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Intermediate\\Build\\BuildRulesProjects\\LenesModuleRules\\LenesModuleRules.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
